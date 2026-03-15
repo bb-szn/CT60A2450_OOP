@@ -9,13 +9,15 @@ public class GravelCar extends RallyCar{
         this.drag = drag;
     }
 
-    // typical value around 0.4 to 0.6
+
+    //getter for new variable
+    //(typical value around 0.4 to 0.6)
     public double getDrag() {
         return drag;
     }
 
 
-
+    
     @Override
     public double calculatePerformance() {
         return (horsepower * 0.85) * (1-drag);

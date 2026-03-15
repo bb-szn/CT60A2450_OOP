@@ -6,11 +6,9 @@ import java.util.Map;
 
 public class ChampionshipStatistics {
 
+    //static so callable always
     public static double calculateAveragePointsPerDriver(List<Driver> drivers) {
 
-        if (drivers.isEmpty()) {
-            return 0.0;
-        }
 
         int totalPoints = 0;
         for (Driver driver : drivers) {
@@ -18,6 +16,15 @@ public class ChampionshipStatistics {
         }
         return ((double) totalPoints / drivers.size());
     }
+    //basically getTotalPoints / number of people
+
+
+
+
+
+
+
+
 
     public static String findMostSuccessfulCountry(List<Driver> drivers) {
 
@@ -28,6 +35,7 @@ public class ChampionshipStatistics {
             String country = driver.getCountry();
             int currentPoints = 0;
 
+            //check if we already had a guy from that country
             if (countryPoints.containsKey(country)) {
                 currentPoints = countryPoints.get(country);
             }

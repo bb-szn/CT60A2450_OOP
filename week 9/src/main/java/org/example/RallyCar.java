@@ -1,6 +1,7 @@
 package org.example;
 
 public abstract class RallyCar {
+//abstract -> wont have an implementation, only a blueprint for child classes
 
     protected String make;
     protected String model;
@@ -25,5 +26,6 @@ public abstract class RallyCar {
         return horsepower;
     }
 
+    //we will override this anyway, can be left empty
     public abstract double calculatePerformance();
 }

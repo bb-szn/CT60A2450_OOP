@@ -37,7 +37,7 @@ public class RallyRaceResult implements RaceResult{
 
 
 
-
+    //getters
     public String getRaceName(){
         return raceName;
     }
@@ -46,6 +46,8 @@ public class RallyRaceResult implements RaceResult{
         return location;
     }
 
+
+    //functionalities inherited from RaceResult
     @Override
     public int getDriverPoints(Driver driver) {
         return results.get(driver);

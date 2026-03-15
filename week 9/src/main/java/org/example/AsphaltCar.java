@@ -9,6 +9,7 @@ public class AsphaltCar extends RallyCar{
 
     }
 
+    //getter for new variable
     public double getDownforce() {
         return downforce;
     }

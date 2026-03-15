@@ -15,27 +15,32 @@ public class Driver {
 
     }
 
-    public RallyCar getCar() {
-        return car;
-    }
-    public void setCar(RallyCar car){
-        this.car=car;
-    }
+    //getters
 
     public String getName() {
         return name;
     }
-
     public String getCountry() {
         return country;
     }
+    public int getPoints() {
+        return points;
+    }
+    public RallyCar getCar() {
+        return car;
+    }
+
+
+    //setters
     public void setCountry(String country) {
         this.country = country;
     }
 
-    public int getPoints() {
-        return points;
+    public void setCar(RallyCar car){
+        this.car=car;
     }
+
+    //dont have a setter for points, only add
     public void addPoints(int points) {
         this.points += points;
     }
