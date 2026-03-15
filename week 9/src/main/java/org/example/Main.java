@@ -57,64 +57,103 @@ public class Main
         monteRally.recordRaceResult("Monte Carlo Rally", "Monaco", monteCarloPositions);
         manager.recordResults(monteRally);
 
+
+
+
+
+
+
+        
         // display championship information
-        displayChampionshipStandings(manager);
-        displayChampionshipLeader(manager);
-        displayRaceResults(manager);
-        displayCarPerformanceRatings();
-    }
 
 
-
-
-
-
-
-
-
-    private static void displayChampionshipStandings(ChampionshipManager manager) {
         System.out.println("===== CHAMPIONSHIP STANDINGS =====");
-        int pos = 1;
-        for (Driver drive : manager.getChampionshipScore()) {
-            System.out.println(pos + ". " + drive.getName() + " (" + drive.getCountry() + "): " + drive.getPoints() + " points");
-            pos++;
-        }
-        System.out.println();
-    }
 
-    private static void displayChampionshipLeader(ChampionshipManager manager) {
-        Driver leader = manager.getLeadingDriver();
+        int position = 1;
+
+        for (Driver driver : manager.getChampionshipScore()) {
+            System.out.println(
+                    position + ". " +
+                    driver.getName() +
+                    " (" + driver.getCountry() + ") - " +
+                    driver.getPoints() + " points"
+            );
+            position++;
+        }
+
+        System.out.println();
+
+
+
+
+
+
         System.out.println("===== LEADER =====");
+
+        Driver leader = manager.getLeadingDriver();
+
         if (leader != null) {
             System.out.println(leader.getName() + " with " + leader.getPoints() + " points");
         } else {
             System.out.println("No leader found");
         }
-        System.out.println();
-    }
 
-    private static void displayRaceResults(ChampionshipManager manager) {
+        System.out.println();
+
+
+
+
+
+
         System.out.println("===== RACE RESULTS =====");
+
         for (RallyRaceResult race : manager.getRaceResults()) {
+
             System.out.println("Race: " + race.getRaceName() + " (" + race.getLocation() + ")");
-            for (Driver driverr : race.getResults().keySet()) {
-                int points = race.getDriverPoints(driverr);
-                int position = 5; // default
-                if (points == 25) position = 1;
-                else if (points == 18) position = 2;
-                else if (points == 15) position = 3;
-                else if (points == 12) position = 4;
-                System.out.println("Position " + position + ": " + driverr.getName() + " - " + points + " points");
+
+            for (Driver driver : race.getResults().keySet()) {
+
+                int points = race.getDriverPoints(driver);
+                int racePosition;
+
+                if (points == 25) {
+                    racePosition = 1;
+                } 
+                else if (points == 18) {
+                    racePosition = 2;
+                } 
+                else if (points == 15) {
+                    racePosition = 3;
+                } 
+                else if (points == 12) {
+                    racePosition = 4;
+                } 
+                else {
+                    racePosition = 5;
+                }
+
+                System.out.println(
+                        "Position " + racePosition +
+                        ": " + driver.getName() +
+                        " - " + points + " points"
+                );
             }
+
             System.out.println();
         }
-    }
 
-    private static void displayCarPerformanceRatings() {
+
+
+
         System.out.println("===== CAR PERFORMANCE =====");
-        GravelCar gravel = new GravelCar("Hyundai", "CarB", 370, 0.5);
-        AsphaltCar asphalt = new AsphaltCar("Ford", "CarC", 390, 240.0);
-        System.out.println("Gravel Car Performance: " + gravel.calculatePerformance());
-        System.out.println("Asphalt Car Performance: " + asphalt.calculatePerformance());
+
+        GravelCar gravelCar = new GravelCar("Hyundai", "CarB", 370, 0.5);
+        AsphaltCar asphaltCar = new AsphaltCar("Ford", "CarC", 390, 240.0);
+
+        double gravelPerformance = gravelCar.calculatePerformance();
+        double asphaltPerformance = asphaltCar.calculatePerformance();
+
+        System.out.println("Gravel Car Performance: " + gravelPerformance);
+        System.out.println("Asphalt Car Performance: " + asphaltPerformance);
     }
 }
